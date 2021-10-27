@@ -8,8 +8,9 @@ if __name__ == '__main__':
     v = 4/3*math.pi*(r**3)
     print('圓面積=%.2f' % area, '球體積=%.2f' % v)
     # 若要加上千分位
-    print(type(area))
+    # print(type(area))
     # area = format(area, ",")
     # print(area, type(area))
-    print('%.2f' % area)
-    print(format(float('%.2f' % area), ","))
+    # print('%.2f' % area)
+    # print(format(float('%.2f' % area), ","))
+    print('球體積={:,.2f}'.format(v))  # 千分位 + 小數後2位
