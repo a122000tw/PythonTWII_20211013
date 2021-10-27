@@ -31,3 +31,10 @@ result = reduce(lambda x, y: x + y, scores)
 # x = 130, y = 90: 220
 # x = 220, y = 30: 250
 print(result)
+
+# 5. sorted(iterable, key = lambda parameter: expression)
+scores = [50, 80, 90, 30]
+print(sorted(scores))
+print(sorted(scores, reverse=True))
+prices = [('2330.TW', 599), ('2317.TW', 108), ('3008.TW', 2080)]
+print(sorted(prices, key=lambda p: p[1], reverse=True))
