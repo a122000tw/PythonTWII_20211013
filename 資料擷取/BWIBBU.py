@@ -1,11 +1,9 @@
 import requests
-
+from datetime import timedelta, date
 
 def getData(yyyy, mm, dd):
     yyyymmdd = str(yyyy) + str(mm) + str(dd)
     url = 'https://www.twse.com.tw/exchangeReport/BWIBBU_d?response=csv&date=%s&selectType=ALL' % yyyymmdd
-    url1 = 'https://www.twse.com.tw/exchangeReport/BWIBBU_d?response=csv&date=yyyymmdd&selectType=ALL'
-
     print(url)
     data = requests.get(url).text
     data = data.split("\r\n")
@@ -28,4 +26,4 @@ def getData(yyyy, mm, dd):
 
 if __name__ == '__main__':
     list = getData(2021, 11, 3)
-    print(list)
+    print(len(list), list)

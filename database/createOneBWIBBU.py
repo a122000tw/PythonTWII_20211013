@@ -30,11 +30,10 @@ def create_record(list):
 
 
 if __name__ == '__main__':
-
     #  homework 將 10/11 月份的資料匯入資料庫
+
     list = bwi.getData(2021, 11, 3)
-    time.sleep(30)  # 每次爬完之後要停留10s
     print(len(list), list)
     create_table()
     create_record(list)
-
+    time.sleep(30)  # 每次爬完之後要停留10s
