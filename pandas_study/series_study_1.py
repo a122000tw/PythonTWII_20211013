@@ -11,3 +11,7 @@ print(s[1])
 print(s[0:3])
 print(s.index.values)
 print(s.values)
+print(s.loc['20211103'])
+print(s.iloc[1])
+x = s > 0
+print(s.loc[x])
