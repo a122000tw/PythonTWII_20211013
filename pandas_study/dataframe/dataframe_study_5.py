@@ -14,4 +14,6 @@ a = df.drop('s1', axis=1)
 print(a)
 b = df.drop(pd.Timestamp('2021-11-03'))
 print(b)
+c = b.T  # 倒轉
+print(c)
 
