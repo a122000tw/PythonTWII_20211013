@@ -3,7 +3,7 @@ import pandas as pd
 import io
 import sqlite3
 
-date = '2021-11-24'
+date = '2021-12-02'
 
 
 url = 'https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&date=%s&type=ALLBUT0999&_=1637313358178' % (date.replace("-", ""))
@@ -20,8 +20,10 @@ df = pd.read_csv(io.StringIO(data))
 df = df.astype(str)
 df = df.apply(lambda s: s.str.replace(',', ''))
 # 加入日期
-df['交易日'] = date
-df = df.set_index('證券代號', '交易日')
+df['date'] = date
+df['stock_id'] = df['證券代號']
+df = df.drop('證券代號', axis=1)
+df = df.set_index(['stock_id', 'date'])
 df = df.apply(lambda s: pd.to_numeric(s, errors='coerce'))
 df = df.dropna(axis=1, how='all')
 print(df)

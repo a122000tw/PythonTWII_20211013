@@ -15,7 +15,7 @@ if __name__ == "__main__":
     # 查找某一檔股票(0050)最近幾天(450天)的紀錄
     sql = '''
         SELECT strftime('%Y%m%d', date) as date, 開盤價, 最高價, 最低價, 收盤價 FROM price
-        WHERE stock_id = '0050' AND strftime('%Y%m%d', date) in (SELECT DISTINCT(strftime('%Y%m%d', date)) as date FROM price ORDER by date DESC LIMIT 488)
+        WHERE stock_id = '2317' AND strftime('%Y%m%d', date) in (SELECT DISTINCT(strftime('%Y%m%d', date)) as date FROM price ORDER by date DESC LIMIT 488)
     '''
     # print(sql)
     # 將資料讀進到 pd.DataFrame
@@ -79,10 +79,14 @@ if __name__ == "__main__":
     k = tx['K']
     d = tx['D']
     close = tx['收盤價']
-    buy = (k > d) & (k.shift() < d.shift()) & (d < 25)
+    buy = (k > d) & (k.shift() < d.shift()) & (d < 20)
+    sale = (k < d) & (k.shift() > d.shift()) & (d > 80)
+    # print(sale)
     # print(buy)
     filter = buy == True
+    filter2 = sale == True
     print(buy[filter])
+    print(sale[filter2])
     # 報酬率
     count = 0
     cost = 0
@@ -102,8 +106,10 @@ if __name__ == "__main__":
     # k.plot(label="K", color='orange')
     # d.plot(label="D", color='blue')
     buy = buy.astype(int)
+    sale = sale.astype(int)
     close.plot(label="close", color='gray')
     buy.plot(secondary_y=True, label='buy', color='red')
+    sale.plot(secondary_y=True, label='sale', color='green')
     plt.legend()
     plt.show()
 

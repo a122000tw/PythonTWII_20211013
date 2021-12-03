@@ -17,7 +17,11 @@ df = df.astype(str)
 #  將內容有 , 的去除
 df = df.apply(lambda s: s.str.replace(',', ''))
 #  將證券代號 設定為 index
-df = df.set_index('證券代號')
+df['date'] = date
+df['stock_id'] = df['證券代號']
+df = df.drop('證券代號', axis=1)
+df = df.set_index(['stock_id', 'date'])
+
 #  去除非數字的資料
 df = df.apply(lambda s: pd.to_numeric(s, errors='coerce'))
 df = df.dropna(axis=1, how='all')
