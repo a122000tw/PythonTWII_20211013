@@ -3,7 +3,7 @@ import pandas as pd
 import io
 import sqlite3
 
-date = '2021-12-02'
+date = '2021-12-07'
 
 
 url = 'https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&date=%s&type=ALLBUT0999&_=1637313358178' % (date.replace("-", ""))
