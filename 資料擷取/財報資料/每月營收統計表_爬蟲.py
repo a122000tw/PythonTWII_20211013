@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 from io import StringIO
 import sqlite3
+import time
 
 
 def get_monthly_report(year, month):
@@ -45,6 +46,7 @@ def get_monthly_report(year, month):
     df.index.names = ['date', 'stock_id']  # 變更 index 名稱
     return df
 
+
 def import_monthly_report(df, db_path):
     # 將 df 存成 csv
     df.to_csv('monthly_report.csv', encoding='utf-8_sig')
@@ -55,12 +57,26 @@ def import_monthly_report(df, db_path):
     df.to_sql('monthly_report', conn, if_exists='append')
 
 
-if __name__ == "__main__":
+# 測試
+def test():
     year = 2021
     month = 10
     df = get_monthly_report(year, month)
     print(df)
     # 匯入資料庫
     import_monthly_report(df, '財報_Test.db')
+
+
+if __name__ == "__main__":
+    # test()
+    for year in range(2019, 2021+1):
+        for month in range(1, 12+1):
+            time.sleep(10)
+            try:
+                df = get_monthly_report(year, month)
+                import_monthly_report(df, '../../database/財經資料庫.db')
+                print(year, month, 'OK')
+            except Exception as e:
+                print(year, month, 'Fail', str(e))
 
 

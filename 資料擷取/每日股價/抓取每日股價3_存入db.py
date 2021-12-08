@@ -31,7 +31,7 @@ print(df)
 # 先存成 csv 再轉存 sqlite
 df.to_csv('price.csv', encoding='utf_8')
 # 轉存 sqlite3
-conn = sqlite3.connect('財經資料庫.db')
+conn = sqlite3.connect('../../database/財經資料庫.db')
 # df.to_sql('price', conn, if_exists='replace')
 df.to_sql('price', conn, if_exists='append')
 
