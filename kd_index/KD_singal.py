@@ -10,7 +10,7 @@ if __name__ == "__main__":
     # 設定列表寬度
     pd.set_option('display.width', 500)
     # 設定資料庫路徑
-    db_path = '../每日股價/財經資料庫.db'
+    db_path = '../資料擷取/每日股價/財經資料庫.db'
     conn = sqlite3.connect(db_path)
     # 查找某一檔股票(0050)最近幾天(450天)的紀錄
     sql = '''

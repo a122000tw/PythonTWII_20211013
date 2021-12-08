@@ -1,6 +1,6 @@
 import sqlite3
 import time
-import 資料擷取.BWIBBU as bwi
+import 資料擷取.pe_pb.BWIBBU as bwi
 
 def create_table():
     sql = '''

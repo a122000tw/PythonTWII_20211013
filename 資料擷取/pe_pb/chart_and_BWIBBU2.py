@@ -2,7 +2,7 @@ import sqlite3
 import matplotlib.pyplot as plt
 
 
-conn = sqlite3.connect('tw_stock.db')
+conn = sqlite3.connect('../../database/tw_stock.db')
 cursor = conn.cursor()
 symbol = '2330'
 kind = 'yield'

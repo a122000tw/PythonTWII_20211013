@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 symbol = '2317'
 kind = 'yield'
-conn = sqlite3.connect('tw_stock.db')
+conn = sqlite3.connect('../../database/tw_stock.db')
 cursor = conn.cursor()
 # sql = "select ts, pe from BWIBBU where symbol='%s'" % symbol
 sql = 'select strftime("%Y-%m", ts) as "ts", ROUND(AVG('+kind+'), 2) as "'+kind+'" ' \

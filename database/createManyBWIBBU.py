@@ -1,6 +1,6 @@
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 import time
-import 資料擷取.BWIBBU as bwi
+import 資料擷取.pe_pb.BWIBBU as bwi
 import database.createOneBWIBBU as bmibbu
 
 
