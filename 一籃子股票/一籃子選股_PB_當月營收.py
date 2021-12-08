@@ -42,7 +42,7 @@ if __name__ == '__main__':
     print(rev)
 
     # 策略條件
-    condition1 = pb.columns[(pb.iloc[0] > 0.1) & (pb.iloc[0] < 0.5)]
+    condition1 = pb.columns[(pb.iloc[0] > 5) & (pb.iloc[0] < 6)]
     print('condition1:', condition1)  # 印出符合策略1的股票
     condition2 = rev.columns[rev.iloc[-3:].mean() > rev.iloc[-12:].mean()]
     print('condition2:', condition2)  # 近3個月月營收 > 近12個月月營收
